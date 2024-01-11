@@ -13,21 +13,18 @@ items.forEach(item => {
 
 sortableLists.forEach(sortableList => {
     const initSortableList = (e) => {
+        e.preventDefault();
+
         const draggingItem = document.querySelector(".dragging");
         const siblings = [...sortableList.querySelectorAll(".item:not(.dragging)")];
 
         let nextSibling = siblings.find(sibling => {
             return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
-
         });
 
-        if (nextSibling == null) {
-            sortableList.appendChild(draggingItem);
-        } else {
-            sortableList.insertBefore(draggingItem, nextSibling)
-        };
+        sortableList.insertBefore(draggingItem, nextSibling);
     }
-
+    
     sortableList.addEventListener("dragover", initSortableList);
 });
 

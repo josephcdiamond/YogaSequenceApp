@@ -11,30 +11,32 @@
 
 body {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     min-height: 100vh;
-    background: #595D88;
+    background: #d9c189;
 
 }
 
 .container {
-    width: 95%;
-    min-height: 100vh;
-    background: #0b0423;
+    min-width: 33%;
+    min-height: 33%;
+    background: #b48641;
     display: flex;
     text-align: center;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
+    border-radius: 5px;
 }
 
 .sortable-list {
     background: #fff;
-    width: 445px;
+    width: 300px;
     height: 500px;
     border-radius: 6px;
     padding: 30px 25px 20px;
-    margin: 5%;
+    margin: 3%;
 }
 
 .sortable-list .item {
@@ -46,7 +48,16 @@ body {
     align-items: center;
     border: 1px solid #ccc;
     justify-content: space-between;
-    cursor: move;
+    cursor: grab;
+}
+
+.sortable-list .item:active {
+    cursor: grabbing;
+}
+
+.item.dragging :where(.details, i){
+    opacity: 0%;
+    cursor: grabbing;
 }
 
 .item .details {
@@ -71,6 +82,35 @@ body {
     font-size: 1.13rem;
 }
 
-.item.dragging :where(.details, i) {
-    opacity: 0;
+.startBtn {
+    font-size: 1.20rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #f2d99e;
+    width: 375px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #a02929;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #a0292996;
+    transform: scale(1);
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+}
+
+.heading {
+    font-size: 1.20rem;
+    background: #f2d99e;
+    width: 375px;
+    padding: 10px;
+    text-align: center;
+    color: #a02929;
+    border-radius: 5px;
+}
+
+.startBtn:hover, .startBtn:focus, .startBtn:active {
+    box-shadow: 0 0 25px #a02929;
+    transform: scale(1.1);
 }
